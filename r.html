@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Free Simple URL Shortener - short.thepixora.com</title>
+    <script src="app.js"></script>
+</head>
+<body>
+    <script>
+        try {
+            const hash = window.location.hash.substring(1);
+            if (!hash) throw new Error('No code');
+            
+            const originalUrl = long(hash);
+            window.location.href = originalUrl;
+            
+        } catch (e) {
+            document.getElementById('message').textContent = 'Invalid short URL';
+            document.body.innerHTML += '<p><a href="index.html">Create new short URL</a></p>';
+        }
+    </script>
+</body>
+</html>

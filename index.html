@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Simple URL Shortener - short.thepixora.com</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>Simple URL Shortener</h1>
+    <h2>short.thepixora.com</h2>
+    <p>Paste URL → Get short code → Share. Works across devices.</p>
+    
+    <div class="input-section">
+        <input type="url" id="originalUrl" placeholder="https://github.com/mv12star">
+        <button onclick="shortenUrl()">Shorten</button>
+    </div>
+    
+    <div id="resultSection" class="result-section">
+        <h3>Short URL</h3>
+        <div class="result-container">
+            <input type="text" id="shortUrl" readonly>
+            <button onclick="copyToClipboard()">Copy</button>
+        </div>
+        <p><a id="testLink" target="_blank">Test this link</a></p>
+    </div>
+
+    <script>
+        function shortenUrl() {
+            const originalUrl = document.getElementById('originalUrl').value.trim();
+            if (!originalUrl) return;
+            
+            const shortCode = short(originalUrl);
+            
+            const basePath = window.location.origin + window.location.pathname.replace('index.html', '');
+            // for local deployment replace r# with r.html#
+            const shortUrl = basePath + 'r#' + shortCode;
+            
+            document.getElementById('shortUrl').value = shortUrl;
+            document.getElementById('testLink').href = shortUrl;
+            document.getElementById('testLink').textContent = shortUrl;
+            document.getElementById('resultSection').style.display = 'block';
+        }
+        
+        function copyToClipboard() {
+            const input = document.getElementById('shortUrl');
+            input.select();
+            document.execCommand('copy');
+        }
+        
+        document.getElementById('originalUrl').value = ''; // https://github.com/mv12star
+    </script>
+</body>
+</html>

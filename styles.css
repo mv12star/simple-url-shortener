@@ -1,0 +1,114 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --button-bg: #f0f0f0;
+    --button-text: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --input-bg: #1e1e1e;
+        --input-border: #444444;
+        --button-bg: #2d2d2d;
+        --button-text: #ffffff;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
+    margin: 20px;
+    padding: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: clamp(24px, 5vw, 32px);
+    margin: 0 0 10px 0;
+    word-wrap: break-word;
+}
+
+p {
+    font-size: clamp(14px, 3vw, 16px);
+    margin: 0 0 20px 0;
+    line-height: 1.4;
+}
+
+.input-section {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+}
+
+input[type="url"],
+input[type="text"] {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    cursor: pointer;
+    max-width: 200px;
+}
+
+.result-section {
+    display: none;
+    margin-top: 20px;
+    max-width: 100%;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+#testLink {
+    color: #0066cc;
+    word-wrap: break-word;
+    display: block;
+    margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+    .input-section {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    input[type="url"] {
+        width: 300px;
+    }
+    
+    .result-container {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    #shortUrl {
+        width: 400px;
+    }
+}
